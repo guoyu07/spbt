@@ -36,6 +36,25 @@ public class ThreadClassTest {
 
 	ExecutorService pool = Executors.newFixedThreadPool(MAX_SIZE);
 
+	
+	public void startRun() {
+
+		ThreadClassTest test = new ThreadClassTest();
+
+		CountDownLatch countDownLatch = new CountDownLatch(MAX_PLAYER);
+		for (int i = 0; i <= MAX_PLAYER + 1; i++) {
+			pool.execute(new CountDownLatchThread(i, countDownLatch, new HashMap<>()));
+		}
+		try {
+			countDownLatch.await();
+			System.out.println("finished");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		test.pool.shutdown();
+	}
+
 	public static void main(String[] args) {
 		ThreadClassTest test = new ThreadClassTest();
 
@@ -51,7 +70,7 @@ public class ThreadClassTest {
 	 */
 	public void fun03() {
 		CountDownLatch countDownLatch = new CountDownLatch(MAX_PLAYER);
-		for (int i = 0; i <= MAX_PLAYER+1; i++) {
+		for (int i = 0; i <= MAX_PLAYER + 1; i++) {
 			pool.execute(new CountDownLatchThread(i, countDownLatch, new HashMap<>()));
 		}
 		try {
