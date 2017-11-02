@@ -36,7 +36,19 @@ public class EqualsTest01 {
 		endTime = System.currentTimeMillis();
 		System.out.println("\n " + testName + " \n  OK ! " + (endTime - startTime) + " ms");
 	}
+	
+	@Test
+	public void Test(){
+		
+	}
 
+	/**
+	 * 证明 == 和 equals 是有区别的
+	 * 
+	 * @输出 403501971 2051753018 a1==a2 : false a1 equals a2 : false 97 97 97
+	 *     s1==s2 : false s1 equals s2 : true s2 equals s3 : true 'a' == 'a' :
+	 *     true 128 128 list1.equals(list2)true
+	 */
 	@Test
 	public void test01() {
 
