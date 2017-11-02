@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
-import cn.forgeeks.activeMQ.test.Consumer;
 
 /**
  * Created by zrb on 2017/9/15.
  */
 public class BinaryTree {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 		int[] array = new int[] { 8, 3, 19, 1, 6, 14, 4, 7 };
 		// int[] array = new int[]{8,3,19,1,6};
