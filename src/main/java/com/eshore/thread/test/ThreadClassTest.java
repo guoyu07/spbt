@@ -22,12 +22,11 @@ import java.util.concurrent.TimeUnit;
  *       barrier point)。在涉及一组固定大小的线程的程序中，这些线程必须不时地互相等待，此时 CyclicBarrier 很有用。因为该
  *       barrier在释放等待线程后可以重用，所以称它为循环的barrier。
  * @desc Phaser 一种可重用的同步屏障，功能上类似于CyclicBarrier和CountDownLatch，但使用上更为灵活。
- *       非常适用于在多线程环境下同步协调分阶段计算任务（Fork/Join框架中的子任务之间需同步时，优先使用Phaser） Exchanger
- *       允许两个线程在某个汇合点交换对象，在某些管道设计时比较有用。
+ *       非常适用于在多线程环境下同步协调分阶段计算任务（Fork/Join框架中的子任务之间需同步时，优先使用Phaser）  
  * @desc Exchanger提供了一个同步点，在这个同步点，一对线程可以交换数据。
  *       每个线程通过exchange()方法的入口提供数据给他的伙伴线程，并接收他的伙伴线程提供的数据并返回。
- *       当两个线程通过Exchanger交换了对象，这个交换对于两个线程来说都是安全的。
- * @desc Exchanger 允许两个线程在某个汇合点交换对象，在某些管道设计时比较有用。
+ *       当两个线程通过Exchanger交换了对象，这个交换对于两个线程来说都是安全的。 Exchanger
+ *       允许两个线程在某个汇合点交换对象，在某些管道设计时比较有用。
  */
 public class ThreadClassTest {
 	public static Integer MAX_SIZE = 100;
@@ -36,7 +35,6 @@ public class ThreadClassTest {
 
 	ExecutorService pool = Executors.newFixedThreadPool(MAX_SIZE);
 
-	
 	public void startRun() {
 
 		ThreadClassTest test = new ThreadClassTest();
