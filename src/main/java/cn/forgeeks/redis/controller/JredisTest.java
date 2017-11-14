@@ -44,7 +44,6 @@ public class JredisTest {
 		jedis.mset("name", "liuling", "age", "23", "qq", "476777XXX");
 		jedis.incr("age"); // 进行加1操作
 		System.out.println(jedis.get("name") + "-" + jedis.get("age") + "-" + jedis.get("qq"));
-
 	}
 
 	/**
@@ -121,6 +120,10 @@ public class JredisTest {
 		System.out.println(jedis.scard("user"));// 返回集合的元素个数
 	}
 
+	/**
+	 * jedis操作list
+	 * @throws InterruptedException
+	 */
 	@Test
 	public void test() throws InterruptedException {
 		// jedis 排序
@@ -165,15 +168,16 @@ public class JredisTest {
 	@Test
 	public void testFile() throws Exception {
 //		RedisUtil.setFile(jedis, "my-obj-01", "E:\\config\\apache-tomcat-7.0.67\\apache-tomcat-7.0.67\\RUNNING.txt");
-		RedisUtil.setFile(jedis, "my-obj-02", "F:\\照片\\Othres\\123.jpg");
+		RedisUtil.setFile(jedis, "my-obj-01", "D:\\forgeeks\\oa.txt");
 //		File file = RedisUtil.getFile(jedis, "my-obj-01");
-		File file = RedisUtil.getFile(jedis, "my-obj-02");
+		File file = RedisUtil.getFile(jedis, "my-obj-01");
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		String record = null;
 		while ((record = br.readLine()) != null) {
-			System.out.println("record:" + record);
+			System.out.println( record);
 		}
-
 	}
 
+	
+	
 }

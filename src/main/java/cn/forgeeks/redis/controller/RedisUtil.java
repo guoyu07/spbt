@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -14,7 +17,7 @@ import redis.clients.jedis.JedisPoolConfig;
 public final class RedisUtil {
 
 	// Redis服务器IP
-	private static String ADDR = "192.168.79.128";
+	private static String ADDR = "192.168.239.128";
 
 	// Redis的端口号
 	private static int PORT = 6379;
@@ -91,6 +94,7 @@ public final class RedisUtil {
 		try {
 			outputStream = new ObjectOutputStream(arrayOutputStream);
 			outputStream.writeObject(value);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -126,6 +130,28 @@ public final class RedisUtil {
 	}
 
 	/**
+	 * 保存对象
+	 * 
+	 * @param redis
+	 * @param key
+	 */
+	public static void setObj(Jedis redis, String key, Object obj) {
+		redis.set(key.getBytes(), object2Bytes(obj));
+	}
+
+	/**
+	 * 获取对象
+	 * 
+	 * @param redis
+	 * @param key
+	 * @return
+	 */
+	public static Object getObj(Jedis redis, String key) {
+		Object obj = byte2Object(redis.get(key.getBytes()));
+		return obj;
+	}
+
+	/**
 	 * 保存文件方法
 	 * 
 	 * @param redis
@@ -147,6 +173,10 @@ public final class RedisUtil {
 	public static File getFile(Jedis redis, String key) {
 		File file = (File) byte2Object(redis.get(key.getBytes()));
 		return file;
+	}
+
+	public static void flushAll(Jedis redis) {
+		redis.flushAll();
 	}
 
 }

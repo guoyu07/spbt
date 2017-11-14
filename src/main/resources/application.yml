@@ -2,7 +2,8 @@
 server:  
     port: 80
     address: 127.0.0.1
-# SPRING PROFILES  
+
+# SPRING配置
 spring:         
     # 配置http编码  
     http:  
@@ -12,6 +13,7 @@ spring:
     mvc:
         view.prefix: /WEB-INF/views/
         view.suffix: .jsp
+    
     #配置activemq消息队列
     activemq:
         broker-url: tcp://localhost:61616
@@ -20,11 +22,24 @@ spring:
         in-memory: true
         pool:
             enabled: false
+    
     #配置可以消费订阅消息
     #jms:
     #   pub-sub-domain: true
+   
+    #spring数据源配置
     datasource:
-        url: jdbc:mysql://localhost:3306/test_school
+        url: jdbc:mysql://localhost:3306/test_school?useUnicode=true&characterEncoding=utf-8
         username: root
         password: root
         driver-class-name: com.mysql.jdbc.Driver
+
+#redis 连接池配置
+jedis :  
+    pool :  
+        host : 192.168.239.128  
+        port : 6379  
+        config :  
+            maxTotal: 100  
+            maxIdle: 200  
+            maxWaitMillis : 10000  
